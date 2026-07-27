@@ -2,7 +2,7 @@ import React from 'react'
 
 const App = () => {
   return (
-    <div className='bg-red-200'>Tailwind test </div>
+    <div className='bg-red-200'>Tailwind test</div>
   )
 }
 

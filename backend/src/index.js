@@ -1,12 +1,18 @@
 import express from 'express';
+import { setupProductsDB } from './db/db.js';
+import productRouter from './routes/productRoutes.js';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(express.json())
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+
+
+app.use('/api/products', productRouter) 
+
+
+setupProductsDB().then(
+  app.listen(port, () => {
+    console.log(`App listening on port ${port}`);
+}));

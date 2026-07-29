@@ -17,7 +17,7 @@ export async function setupProductsDB() {
         stock INT 
       );
     `;
-    console.log('Finished creating table.');
+    console.log('Finished initialising table.');
 
   } catch (err) {
     console.error('Connection failed.', err);

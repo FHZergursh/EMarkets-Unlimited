@@ -1,3 +1,8 @@
 export interface Products {
-  id: number
+  productid: number,
+  name: string,
+  imageurl: string,
+  price: number, 
+  stock: number
 }    
+

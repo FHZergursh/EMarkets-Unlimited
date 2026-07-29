@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard'
+import { type Products } from '../types/Products'
 
 const ProductsGrid = () => {
+  const [products, setProducts] = useState<Products[]>([])
+
+useEffect(() => {
+  const getProducts = () => {
+    console.log("Get products ran")
+
+  }
+
+  getProducts()
+
+
+
+  console.log("Use effect ran")
+
+}, [])
+
+
+
   return (
     <div>
       <h1 className='text-3xl text-center mb-2'>Emarkets Unlimited</h1>

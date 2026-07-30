@@ -6,16 +6,18 @@ const ProductsGrid = () => {
   const [products, setProducts] = useState<Products[]>([])
 
 useEffect(() => {
-  const getProducts = () => {
+  const getProducts = async () => {
     console.log("Get products ran")
-
+    try {
+      const res = await fetch("http://localhost:3000/api/products")
+      const data = await res.json()
+      console.log(data)
+      setProducts(data.data)
+    } catch (error) {
+      console.log(error)
+    }
   }
-
   getProducts()
-
-
-
-  console.log("Use effect ran")
 
 }, [])
 
@@ -26,20 +28,12 @@ useEffect(() => {
       <h1 className='text-3xl text-center mb-2'>Emarkets Unlimited</h1>
       <div className='max-h-full bg-gray-200 flex justify-center '>
         <div className='w-[75%] h-[75%] bg-red-200'>
-          <div className='grid grid-cols-4 gap-y-5 pl-[5%]'>
-            <ProductCard name="Item 1" />
-            <ProductCard name="Item 2" />
-            <ProductCard name="Item 3" />
-            <ProductCard name='Item 4' />
-            <ProductCard name="Item 5" />
-            <ProductCard name="Item 6" />
-            <ProductCard name="Item 7" />
-            <ProductCard name='Item 8' />
-            <ProductCard name='Item 9' />
-            <ProductCard name="Item 10" />
-            <ProductCard name="Item 11" />
-            <ProductCard name='Item 12' />
-            <ProductCard name='Item 13' />
+          <div className='grid grid-cols-4 gap-y-5 gap-x-10 pl-[5%]'>
+            {products.map ((item) => (
+              <div>
+                <ProductCard product={item} />
+              </div>
+            ))}
           </div>
         </div>
 

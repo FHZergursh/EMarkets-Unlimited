@@ -30,7 +30,7 @@ useEffect(() => {
         <div className='w-[75%] h-[75%] bg-red-200'>
           <div className='grid grid-cols-4 gap-y-5 gap-x-10 pl-[5%]'>
             {products.map ((item) => (
-              <div>
+              <div key={item.productid}>
                 <ProductCard product={item} />
               </div>
             ))}

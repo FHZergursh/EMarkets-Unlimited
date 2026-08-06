@@ -48,7 +48,7 @@ export const getProduct = async (req, res) => {
 
     const product = await sql.query("SELECT * FROM products WHERE productid = $1", [productid])
 
-    return res.status(200).json({success: true, data: product})
+    return res.status(200).json({success: true, data: product[0]})
 
   } catch (error) 
   {

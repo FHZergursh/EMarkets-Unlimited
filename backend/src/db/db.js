@@ -23,7 +23,7 @@ export async function setupProductsDB() {
         userid SERIAL PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL,
-        email VARCHAR(500) NOT NULL,
+        email VARCHAR(500) NOT NULL
 
       );
     `;
@@ -31,10 +31,11 @@ export async function setupProductsDB() {
     await sql`
       CREATE TABLE IF NOT EXISTS reviews (
         reviewid SERIAL PRIMARY KEY,
-        FOREIGN KEY (productid) REFERENCES products(productid)
+        productid INT,
+        FOREIGN KEY (productid) REFERENCES products(productid),
         content VARCHAR(1000) NOT NULL,
         starrating INT, 
-        createdat TIMESTAMP NOT NULL,
+        createdat TIMESTAMP NOT NULL
 
       );
     `;

@@ -1,21 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import type { Products } from '../types/Products'
+import { useParams } from 'react-router'
+
 
 const Product = () => {
+  const {productid} = useParams()
+  const {product, setProduct} = useState<Products>()
+  
+  
+
+
+
   return (
     <div>
-      <div>Product name, from props props</div>
-
-      <img> Image placeholder </img>
-
-      <div>
-        <div>Price info </div>
-        <div>Seller name and account</div>
-      </div>
-
-      <div>Reviews, secondary key db probably?</div>
-
-      <div></div>
-
+      <div>Test, id is {productid}</div>
 
 
     </div>

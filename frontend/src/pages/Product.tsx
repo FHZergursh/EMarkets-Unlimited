@@ -6,6 +6,7 @@ import { useParams } from 'react-router'
 const Product = () => {
   const {productid} = useParams()
   const [product, setProduct] = useState<Products>()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const getProducts = async () => {
@@ -15,20 +16,34 @@ const Product = () => {
         const data = await res.json()
         console.log(data)
         setProduct(data.data)
+        setLoading(false)
       } catch (error) {
         console.log(error)
       }
     }
     getProducts()
   
-  }, [])
+  }, [productid])
+  
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    )
+  }
 
-  return (
+  else return (
     <div>
-      <div>Test, id is {productid}</div>
-      <div>Product name is {product?.name}</div>
-
-
+      <div className='w-screen h-screen'>
+        <div className='flex justify-start ml-[5vw] gap-[10vw]'> 
+          <div className='bg-red-200 w-[30%] h-fit'>
+            <img src={product?.imageurl} />
+          </div>
+          <div className='bg-blue-200 h-fit'>information, put this on right
+            <div>Test, id is {productid}</div>
+            <div>Product name is {product?.name}</div>
+          </div>
+        </div>
+      </div>      
     </div>
   )
 }
